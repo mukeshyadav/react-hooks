@@ -10,9 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: build
+        working-directory: 
         run: |
-          cd ./
-          npm ci
+          npm ci --no-progress
           vite build
       - uses: ./
         id: vercel-action
