@@ -1,0 +1,30 @@
+name: deploy hook site
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: build
+        run: |
+          cd ./
+          npm ci
+          vite build
+      - uses: ./
+        id: vercel-action
+        with: 
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          github-comment: false
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: ./dist/
+      - name: preview-url
+        run: | 
+          echo ${{ steps.vercel-action.outputs.preview-url }}
+        
+
