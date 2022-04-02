@@ -17,6 +17,7 @@ jobs:
           npm run build
       - uses: amondnet/vercel-action@v20.0.1
         id: vercel-action
+        if: github.event_name == 'push'
         with: 
           github-token: ${{ secrets.GITHUB_TOKEN }}
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
