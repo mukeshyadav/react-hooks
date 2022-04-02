@@ -17,14 +17,14 @@ jobs:
           npm run build
       - uses: amondnet/vercel-action@v20.0.1
         id: vercel-action
-        if: github.event_name == 'push'
+        if: github.event_name == 'pull_request_target'
         with: 
           github-token: ${{ secrets.GITHUB_TOKEN }}
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          github-comment: false
+          scope: ${{ secrets.VERCEL_ORG_ID }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          working-directory: ./dist
+          vercel-args: "--confirm"
       - name: preview-url
         run: | 
           echo ${{ steps.vercel-action.outputs.preview-url }}
