@@ -12,7 +12,6 @@ jobs:
       - name: build
         working-directory: ./
         run: |
-          ls -l
           npm ci --no-progress
           vite build
       - uses: ./
