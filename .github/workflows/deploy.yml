@@ -10,8 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: build
-        working-directory: 
+        working-directory: ./react-hooks/
         run: |
+          ls -l
           npm ci --no-progress
           vite build
       - uses: ./
