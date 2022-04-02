@@ -13,7 +13,7 @@ jobs:
         working-directory: ./
         run: |
           npm ci --no-progress
-          vite build
+          npm run build
       - uses: ./
         id: vercel-action
         with: 
