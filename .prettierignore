@@ -1,0 +1,9 @@
+__MACOSX
+dist
+build
+*.handlebars
+*.hbs
+/.circleci
+/charts
+/datastore
+/tmp
