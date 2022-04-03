@@ -1,5 +1,5 @@
 function App() {
-  return <header className="app-header">GitHooks Test</header>;
+  return <header className="app-header">GitHooks </header>;
 }
 
 export default App;
